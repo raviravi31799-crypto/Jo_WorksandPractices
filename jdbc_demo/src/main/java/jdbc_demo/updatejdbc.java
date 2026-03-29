@@ -5,19 +5,23 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class delete {
+public class updatejdbc {
 
-	public static void main(String[] args) {
+	public static void update(String name, String course, String email) {
 		String dbUrl="jdbc:mysql://localhost:3306/testdb";
 		String username="root";
 		String password="Jothika@05";
 		try(Connection con=DriverManager.getConnection(dbUrl,username,password)){
-	String sql1="Delete from Student where Name=?";
+	String sql1="UPDATE Student Set course=?,Email=? where Name=?";
 	PreparedStatement statement =con.prepareStatement(sql1);
-	statement.setString(1, "Bibin");
-	int rowsDeleted=statement.executeUpdate();
-	if(rowsDeleted>0) {
-		System.out.println("Student details deleted successfully!!");
+	
+	
+	statement.setString(1, course);
+	statement.setString(2,email);
+	statement.setString(3, name);
+	int rowsUpdated=statement.executeUpdate();
+	if(rowsUpdated>0) {
+		System.out.println("Student details updated successfully!!");
 	}
 	else {
 		System.out.println("No matching student found!");
@@ -28,7 +32,15 @@ public class delete {
 	catch (SQLException ex) {
 	ex.printStackTrace();
 }
-
-	}
+}
 
 }
+
+
+
+
+
+
+	
+
+

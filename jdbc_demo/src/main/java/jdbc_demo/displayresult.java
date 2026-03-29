@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class displayresult {
-         public static void main(String[]args) {
+	public static void display() {
         	 String dbUrl="jdbc:mysql://localhost:3306/testdb";
      		String username="root";
      		String password="Jothika@05";
